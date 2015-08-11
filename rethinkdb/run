@@ -1,0 +1,2 @@
+#!/bin/sh
+exec rethinkdb --config-file /etc/rethinkdb.conf
