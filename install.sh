@@ -2,9 +2,7 @@
 set -e
 
 # install runit
-mv /install/runit/bin/* /usr/bin
-mv /install/runit/sbin/* /usr/sbin
-mkdir /etc/service
+cp -R /install/runit/* /
 
 # install consul
 apt-get update
@@ -22,5 +20,8 @@ mkdir /consul-data
 # install rethinkdb
 mv /install/rethinkdb /etc/service
 touch /etc/rethinkdb.conf
+
+# install init.sh
+mv /install/init.sh /sbin/initsh
 
 rm -r /install

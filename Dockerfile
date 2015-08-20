@@ -5,4 +5,4 @@ ADD https://dl.bintray.com/mitchellh/consul/0.5.2_linux_amd64.zip /tmp/consul.zi
 ADD . /install/
 RUN /install/install.sh
 ENV GOMAXPROCS=2
-CMD ["/usr/bin/runsvdir", "-P", "/etc/service"]
+CMD ["/sbin/initsh"]
