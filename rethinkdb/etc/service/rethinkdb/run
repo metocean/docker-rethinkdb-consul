@@ -1,0 +1,15 @@
+#!/bin/bash
+servicename=$(cat /consul/rethinkdb.json | ./JSON.sh | grep "\"name\"\].*" | awk '{ print $2}'  | cut -d'"' -f2)
+serviceport=$(cat /consul/rethinkdb.json | ./JSON.sh | grep "\"port\"\].*" | awk '{ print $2}'  | cut -d'"' -f2)
+until $(wget -q http://localhost:8500/v1/catalog/service/$servicename); do
+  echo 'RethinkDB is waiting for consul to connect'
+  sleep 5
+done
+selfie=$(ip addr show | grep 'inet ' | grep -v '127.0.0.1' | awk '{ print $2}' | cut -d'/' -f1)
+others=$(wget -qO- http://localhost:8500/v1/catalog/service/$servicename | ./JSON.sh | grep "\"Address\"\].*" | grep -v "$selfie" | grep -oP "\d+\.\d+\.\d+\.\d+")
+params='rethinkdb --directory /rethinkdb-data --config-file /etc/rethinkdb.conf'
+for ip in $others
+do
+  params="$params --join $ip:$serviceport"
+done
+exec $params

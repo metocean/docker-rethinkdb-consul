@@ -1,0 +1,6 @@
+{
+  "service": {
+    "name": "rethinkdb",
+    "port": 29015
+  }
+}
