@@ -1,6 +1,8 @@
 # RethinkDB Consul
 RethinkDB with Consul
 
+`docker pull metocean/rethinkdb-consul`
+
 Overmount the following files and folders to customise:
 - `/consul/rethinkdb.json` - The RethinkDB [consul service definition file](https://www.consul.io/docs/agent/services.html). Mount an alternate to change the service registered with consul, e.g. change the service name or add tags.
 - `/etc/rethinkdb.conf` - [Rethinkdb's configuration file](http://www.rethinkdb.com/docs/config-file/). Change how RethinkDB runs.
