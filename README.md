@@ -12,3 +12,5 @@ Overmount the following files and folders to customise:
 This docker will parse the service name and port from the consul service definition file `/consul/rethinkdb.json` and use those details to discover other RethinkDB instances to create a cluster. These IP addresses will be added to the rethinkdb startup command, e.g. `rethinkdb --join 172.17.0.46:28015`.
 
 By default RethinkDB will bind to all interfaces, and will run with the default ports - e.g. 29015 for intracluster connections. The default consul service name is 'rethinkdb'.
+
+Use [petecoop/rethinkdb-driver](https://github.com/petecoop/rethinkdb-driver) to perform dump actions on RethinkDB.
