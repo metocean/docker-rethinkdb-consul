@@ -18,7 +18,7 @@ cp -R /install/consul/* /
 
 # install rethinkdb
 apt-get install -y python
-pip install rethinkdb
+pip3 install rethinkdb
 cp -R /install/rethinkdb/* /
 
 # install init.sh
